@@ -41,10 +41,11 @@ args = [
 ]
 
 # c = open("out4.html", "w+")
-out = subprocess.call(["ls", "-l"])
+#out = subprocess.call(["ls", "-l"])
+out = subprocess.run(args, capture_output=True)
 
 # with open("error.txt", "w+") as b:
 #     b.write(out.stderr.decode("utf-8"))
 
-# with open("out3.html", "w+") as f:
-#     f.write(out.stdout.decode("utf-16"))
+with open("out3.html", "w+") as f:
+     f.write(out.stdout.decode("utf-8"))
