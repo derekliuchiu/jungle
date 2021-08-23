@@ -40,12 +40,17 @@ args = [
     "-H",'accept-language: en-US,en;q=0.9',
 ]
 
-# c = open("out4.html", "w+")
-#out = subprocess.call(["ls", "-l"])
-out = subprocess.run(args, capture_output=True)
 
-# with open("error.txt", "w+") as b:
-#     b.write(out.stderr.decode("utf-8"))
+# out = subprocess.run(args, capture_output=True)
 
-with open("out3.html", "w+") as f:
-     f.write(out.stdout.decode("utf-8"))
+# with open("out3.html", "w+") as f:
+#      f.write(out.stdout.decode("utf-8"))
+
+with open("out3.html", "rb") as s:
+    soup = BeautifulSoup(s.read().decode("utf-8"), "html.parser")
+
+    price = soup.find('input', {'id':"attach-base-product-price"})["value"]
+
+    print(price)
+
+
