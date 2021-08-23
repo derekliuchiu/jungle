@@ -1,8 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import subprocess
+import mysql.connector
+
 
 link = "https://www.amazon.com/dp/B0046EC18A"
+id = "B0046EC18A"
 
 # headers = {
 #     'authority': 'www.amazon.com',
@@ -52,5 +55,27 @@ with open("out3.html", "rb") as s:
     price = soup.find('input', {'id':"attach-base-product-price"})["value"]
 
     print(price)
+    
+    con = mysql.connector.connect(
+                    host="127.0.0.1",
+                    database = 'prices',
+                    port=3306,
+                    user="root",
+                    password="#eW2IV0pK&rH9&R65*IO"
+                    )
+    cursor = con.cursor()
+    query = "INSERT INTO ProductPrices (Id, Price) VALUES (%s, %s) ON DUPLICATE KEY UPDATE Price=VALUES(Price)"
+    values = (id, price)
+    cursor.execute(query, values)
+    con.commit()
+
+    print(cursor.rowcount, "record inserted")
+    
+    query = "SELECT * FROM ProductPrices"
+    cursor.execute(query)
+    records = cursor.fetchall()
+    for record in records:
+        print(record)
+
 
 
