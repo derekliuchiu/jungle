@@ -18,17 +18,11 @@ try:
     print("Connected to database: ", db)
     #Now Create a Toyota for example
     Query = """
-            CREATE TABLE ProductPrices(
-            Id Int(11) NOT NULL AUTO_INCREMENT,
-            Asin varchar(255) NOT NULL,
-            Price DECIMAL(5,2) NOT NULL,
-            Date Int(11) NOT NULL,
-            PRIMARY KEY (Id)
-            ) 
+            DROP TABLE ProductPrices
             """
     MyQuerry = mycursor.execute(Query)
  
-    print("Table created")
+    print("Table deleted")
     establish_con.commit()
     mycursor.close()
     establish_con.close()
