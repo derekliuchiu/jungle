@@ -16,5 +16,5 @@ def hello_world():
     key = request.headers.get('authorization_key','')
     if not key:
         return {'error': 'Bad key value'}
-    
+
     return db.get_price_date(asin, time)
