@@ -33,11 +33,17 @@ class MySQL:
         return dic
     
     def insert_product(self, asin):
-        query = "INSERT INTO Products VALUES %s ON DUPLICATE KEY UPDATE Asin = Asin"
+        query = "INSERT INTO Products VALUES (%s) ON DUPLICATE KEY UPDATE Asin = Asin"
         values = (asin,)
-        self.cursor.excecute(query, values)
-        self.con.commit()
+        self.cursor.execute(query, values)
+        self.connection.commit()
 
+    def get_product_table(self):
+        query = "SELECT * FROM Products"
+        self.cursor.execute(query)
+        records = self.cursor.fetchall()
+        res = [x[0] for x in records]
+        return res
 
 
     def __del__(self):

@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request, render_template
 from database import MySQL
 
 app = Flask(__name__)
@@ -27,3 +26,14 @@ def product_insert():
         return "successfully inserted asin"
     else:
         return {'error': 'Asin not valid'}
+
+@app.route("/", methods = ["GET"])
+def home_page():
+    return render_template("index.html")
+
+@app.route("/table", methods = ["GET"])
+def show_table():
+    table = db.get_product_table()
+    print(table)
+    return render_template("table.html", table = table)
+
