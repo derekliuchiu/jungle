@@ -31,6 +31,14 @@ class MySQL:
         for price, date in records:
             dic[str(date)] = str(price)
         return dic
+    
+    def insert_product(self, asin):
+        query = "INSERT INTO Products VALUES %s ON DUPLICATE KEY UPDATE Asin = Asin"
+        values = (asin,)
+        self.cursor.excecute(query, values)
+        self.con.commit()
+
+
 
     def __del__(self):
         if self.initialized:
