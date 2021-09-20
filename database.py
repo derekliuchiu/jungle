@@ -1,3 +1,4 @@
+from flask.templating import render_template
 import mysql.connector
 
 class MySQL:
@@ -22,7 +23,7 @@ class MySQL:
         self.cursor = self.connection.cursor()
         self.initialized = True
 
-    def get_price_date(self, asin, time):
+    def get_price_date(self, asin): #took out time parameter
         query = "SELECT Price, FROM_UNIXTIME(Date) FROM ProductPrices WHERE Asin = %s"
         asin_val = (asin,)
         self.cursor.execute(query, asin_val)
@@ -30,7 +31,7 @@ class MySQL:
         dic = {}
         for price, date in records:
             dic[str(date)] = str(price)
-        return dic
+        return render_template("return_product.html", dic = dic)
     
     def insert_product(self, asin):
         query = "INSERT INTO Products VALUES (%s) ON DUPLICATE KEY UPDATE Asin = Asin"

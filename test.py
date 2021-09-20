@@ -5,18 +5,19 @@ app = Flask(__name__)
 db = MySQL('prices', '#eW2IV0pK&rH9&R65*IO')
 
 @app.route("/get", methods = ["GET"])
-def hello_world():
+def get_product():
     asin = request.args.get('asin', '')
     if not asin:
-        return {'error':'Bad asin value'}
+        return render_template("bad_value.html", value = "asin")
     time = request.args.get('timestamp','')
     if not time:
-        return {'error': 'Bad time value'}
-    key = request.headers.get('authorization_key','')
-    if not key:
-        return {'error': 'Bad key value'}
+        return render_template("bad_value.html", value = "time")
 
-    return db.get_price_date(asin, time)
+    #key = request.headers.get('authorization_key','')
+    # if not key:
+    #     return {'error': 'Bad key value'}
+
+    return db.get_price_date(asin) #no time parameter, might need to change so they can get price at specific time
 
 @app.route("/insert", methods = ["POST"])
 def product_insert():

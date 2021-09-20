@@ -1,4 +1,4 @@
-.asintable {
+table {
     border-style: solid;
     border-collapse: collapse;
     background: burlywood;
@@ -6,12 +6,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 50%;
-    height: 50%;
-    font-size: 30px;
+    width: 70%;
+    height: 70%;
+    font-size: 20px;
     font-family:'Times New Roman', Times, serif; 
     
 }
 .row {
     border-bottom: 1px solid black;
+}
+
+.col{
+    border-right: 1px solid black;
 }
