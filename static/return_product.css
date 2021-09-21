@@ -1,4 +1,5 @@
 table {
+    table-layout: fixed;
     border-style: solid;
     border-collapse: collapse;
     background: burlywood;

@@ -9,11 +9,12 @@ def get_product():
     asin = request.args.get('asin', '')
     if not asin:
         return render_template("bad_value.html", value = "asin")
-    time = request.args.get('timestamp','')
-    if not time:
-        return render_template("bad_value.html", value = "time")
 
-    #key = request.headers.get('authorization_key','')
+    # time = request.args.get('timestamp','')
+    # if not time:
+    #     return render_template("bad_value.html", value = "time")
+
+    # key = request.headers.get('authorization_key','')
     # if not key:
     #     return {'error': 'Bad key value'}
 
