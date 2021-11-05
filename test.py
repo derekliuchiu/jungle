@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from database import MySQL
 
 app = Flask(__name__)
-db = MySQL('prices', '#eW2IV0pK&rH9&R65*IO')
+db = MySQL('Prices', '#eW2IV0pK&rH9&R65*IO')
 
 @app.route("/get", methods = ["GET"])
 def get_product():
