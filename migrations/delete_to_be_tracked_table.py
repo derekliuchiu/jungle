@@ -4,7 +4,7 @@ from mysql.connector import Error
 try:
     establish_con = mysql.connector.connect(
                     host="127.0.0.1",
-                    database = 'prices',
+                    database = 'Prices',
                     port=3306,
                     user="root",
                     password="#eW2IV0pK&rH9&R65*IO"
