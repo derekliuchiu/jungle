@@ -30,6 +30,7 @@ class MySQL:
         dic = {}
         for price, date in records:
             dic[str(date)] = str(price)
+        print(dic)
         return dic
     
     def insert_product(self, asin):
