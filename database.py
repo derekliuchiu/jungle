@@ -45,6 +45,13 @@ class MySQL:
         records = self.cursor.fetchall()
         res = [x[0] for x in records]
         return res
+    
+    def insert_to_prices(self, asin, price):
+        query = "INSERT INTO ProductPrices (Asin, Price, Date) VALUES (%s, %s, UNIX_TIMESTAMP()) ON DUPLICATE KEY UPDATE Price=VALUES(Price)"
+        values = (asin, price)
+        self.cursor.execute(query, values)
+        self.connection.commit()
+        print(self.cursor.rowcount, "record inserted")
 
 
     def __del__(self):
