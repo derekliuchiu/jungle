@@ -1,4 +1,3 @@
-from flask.templating import render_template
 import mysql.connector
 
 class MySQL:
@@ -31,7 +30,7 @@ class MySQL:
         dic = {}
         for price, date in records:
             dic[str(date)] = str(price)
-        return render_template("return_product.html", dic = dic)
+        return dic
     
     def insert_product(self, asin):
         query = "INSERT INTO Products VALUES (%s) ON DUPLICATE KEY UPDATE Asin = Asin"

@@ -17,8 +17,8 @@ def get_product():
     # key = request.headers.get('authorization_key','')
     # if not key:
     #     return {'error': 'Bad key value'}
-
-    return db.get_price_date(asin) #no time parameter, might need to change so they can get price at specific time
+    price_date_table = db.get_price_date(asin)
+    return render_template("return_product.html", dic = price_date_table) #no time parameter, might need to change so they can get price at specific time
 
 @app.route("/insert", methods = ["POST"])
 def product_insert():
@@ -39,9 +39,9 @@ def show_table():
     print(table)
     return render_template("table.html", table = table)
 
-@app.route("/prices", methods = ["GET"])
-def show_prices():
-    table = db.get_price_date()
-    print(table)
-    return render_template("table.html", table = table)
+# @app.route("/prices", methods = ["GET"])
+# def show_prices():
+#     table = db.get_price_date()
+#     print(table)
+#     return render_template("table.html", table = table)
 
