@@ -16,7 +16,7 @@ class MySQL:
             port = MySQL.port,
             user = MySQL.user,
             password = self.password,
-            #TODO add autocommit = True
+            autocommit = True
         )
         self.cursor = self.connection.cursor()
 
