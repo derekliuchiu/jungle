@@ -28,4 +28,6 @@ for asin in db.get_product_table():
 
     db.insert_to_prices(asin, price)
 
+    print(db.get_price_date(asin))
+
     

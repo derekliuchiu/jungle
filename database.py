@@ -9,18 +9,16 @@ class MySQL:
     def __init__(self, database, password):
         self.database = database
         self.password = password
-        self.initialized = False
         # if error occurs during mysql connection, __del__ shouldnt try to close
-        establish_con = mysql.connector.connect(
+        self.connection = mysql.connector.connect(
             host = MySQL.host,
             database = self.database,
             port = MySQL.port,
             user = MySQL.user,
-            password = self.password
+            password = self.password,
+            #TODO add autocommit = True
         )
-        self.connection = establish_con
         self.cursor = self.connection.cursor()
-        self.initialized = True
 
     def get_price_date(self, asin): #took out time parameter
         query = "SELECT Price, FROM_UNIXTIME(Date) FROM ProductPrices WHERE Asin = %s"
@@ -55,6 +53,5 @@ class MySQL:
 
 
     def __del__(self):
-        if self.initialized:
-            self.cursor.close()
-            self.connection.close()
+        self.cursor.close()
+        self.connection.close()
