@@ -39,3 +39,9 @@ def show_table():
     print(table)
     return render_template("table.html", table = table)
 
+@app.route("/prices", methods = ["GET"])
+def show_prices():
+    table = db.get_price_date()
+    print(table)
+    return render_template("table.html", table = table)
+

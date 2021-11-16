@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import subprocess
 import mysql.connector
 
+
 link = "https://www.amazon.com/dp/B0046EC18A"
 Asin = "xxxxxxxxxxxx"
 

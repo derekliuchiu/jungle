@@ -24,6 +24,8 @@ for asin in db.get_product_table():
 
     soup = BeautifulSoup(response.text, "html.parser")
     price = soup.find('input', {'id':"attach-base-product-price"})["value"]
-    print(price)
+    print(asin + " : " + price)
+
+    db.insert_to_prices(asin, price)
 
     
