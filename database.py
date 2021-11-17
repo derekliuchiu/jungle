@@ -28,7 +28,6 @@ class MySQL:
         dic = {}
         for price, date in records:
             dic[str(date)] = str(price)
-        print(dic)
         return dic
     
     def insert_product(self, asin):
@@ -49,7 +48,7 @@ class MySQL:
         values = (asin, price)
         self.cursor.execute(query, values)
         self.connection.commit()
-        print(self.cursor.rowcount, "record inserted")
+        #print(self.cursor.rowcount, "record inserted")
 
 
     def __del__(self):

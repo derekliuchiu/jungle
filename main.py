@@ -36,7 +36,7 @@ def home_page():
 @app.route("/table", methods = ["GET"])
 def show_table():
     table = db.get_product_table()
-    print(table)
+    #print(table)
     return render_template("table.html", table = table)
 
 # @app.route("/prices", methods = ["GET"])
