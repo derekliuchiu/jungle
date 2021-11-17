@@ -28,7 +28,7 @@ for asin in db.get_product_table():
     price = soup.find('input', {'id':"attach-base-product-price"})["value"]
 
     if price is None:
-        price = soup.find('input', {"id":"twister-plus-price-data-price"})["value"]
+        price = soup.find('input', {'id':"twister-plus-price-data-price"})["value"]
 
     print(asin + " : " + price)
 
