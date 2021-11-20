@@ -21,12 +21,10 @@ for asin in db.get_product_table():
     }
 
     response = requests.get(link, headers=headers)
-    with open("out.html", "w+") as f:
-        f.write(response.text)
-
+    
     soup = BeautifulSoup(response.text, "html.parser")
     price = soup.find('input', {'id':"attach-base-product-price"})
-    
+
     if price is not None:
         price = price["value"]
 
