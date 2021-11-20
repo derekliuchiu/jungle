@@ -25,11 +25,10 @@ for asin in db.get_product_table():
     soup = BeautifulSoup(response.text, "html.parser")
     price = soup.find('input', {'id':"attach-base-product-price"})
 
-    if price is not None:
-        price = price["value"]
+    if price is None:
+        price = soup.find('input', {'id':"twister-plus-price-data-price"})
 
-    else:
-        price = soup.find('input', {'id':"twister-plus-price-data-price"})["value"]
+    price = price["value"]
 
     print(asin + " : " + price)
 
